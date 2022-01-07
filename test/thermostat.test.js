@@ -11,4 +11,9 @@ describe('Thermostat Class', () => {
   it('gives temperature reading', () => {
     expect(thermostat.getTemperature()).toBe(20);
   });
+
+  it('increases the temperature by 1', () => {
+    thermostat.up();
+    expect(thermostat.getTemperature()).toBe(21);
+  });
 })
