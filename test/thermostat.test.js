@@ -39,5 +39,23 @@ describe('Thermostat Class', () => {
     };
 
     expect(thermostat.getTemperature()).toBe(10);
-  })
+  });
+
+  it('has a maximum temperature of 25 degrees when power saving mode is on', () => {
+    for (let i = 0; i < 6; i++) {
+      thermostat.up();
+    };
+
+    expect(thermostat.getTemperature()).toBe(25);
+  });
+
+  it('has a maximum temperature of 32 degrees when power saving mode is off', () => {
+    thermostat.setPowerSavingMode(false);
+    
+    for (let i = 0; i < 13; i++) {
+      thermostat.up();
+    };
+
+    expect(thermostat.getTemperature()).toBe(32);
+  });
 })
