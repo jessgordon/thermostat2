@@ -2,7 +2,9 @@ const Thermostat = require('../lib/thermostat');
 
 describe('Thermostat Class', () => {
 
-  const thermostat = new Thermostat();
+  beforeEach(() => {
+    thermostat = new Thermostat();
+  })
 
   it('creates an instance of the Thermostat Class', () => {
     expect(thermostat).toBeInstanceOf(Thermostat);
@@ -15,5 +17,10 @@ describe('Thermostat Class', () => {
   it('increases the temperature by 1', () => {
     thermostat.up();
     expect(thermostat.getTemperature()).toBe(21);
+  });
+
+  it('decreases the temperature by 1', () => {
+    thermostat.down();
+    expect(thermostat.getTemperature()).toBe(19);
   });
 })
