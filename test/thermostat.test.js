@@ -58,4 +58,24 @@ describe('Thermostat Class', () => {
 
     expect(thermostat.getTemperature()).toBe(32);
   });
+
+  it('resets temperature to twenty degrees', () => {
+    thermostat.up();
+    expect(thermostat.reset()).toEqual(20);
+  })
+
+  it('returns current energy usage', () => {
+    expect(thermostat.energyusage()).toEqual('medium usage')
+
+    for (let i = 0; i < 3; i++) {
+      thermostat.down();
+    };
+    expect(thermostat.energyusage()).toEqual('low usage')
+
+    thermostat.setPowerSavingMode(false);
+    for (let i = 0; i < 10; i++) {
+      thermostat.up();
+    };
+    expect(thermostat.energyusage()).toEqual('high usage')
+  })
 })
