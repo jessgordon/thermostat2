@@ -32,4 +32,12 @@ describe('Thermostat Class', () => {
     thermostat.setPowerSavingMode(false);
     expect(thermostat.powerSavingMode).toBe(false);
   });
+
+  it('has a minimum temperature of 10 degrees', () => {
+    for (let i = 0; i < 11; i++) {
+      thermostat.down();
+    };
+
+    expect(thermostat.getTemperature()).toBe(10);
+  })
 })
